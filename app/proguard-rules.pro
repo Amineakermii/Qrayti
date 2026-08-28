@@ -1,0 +1,2 @@
+-keep class org.json.** { *; }
+-keepattributes *Annotation*
