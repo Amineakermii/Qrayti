@@ -1,0 +1,19 @@
+name = "qrayti"
+compatibility_date = "2026-08-18"
+pages_build_output_dir = "./site"
+
+[vars]
+ADMIN_EMAIL = "9rayti.learn@gmail.com"
+
+[[r2_buckets]]
+binding = "COURSE_FILES"
+bucket_name = "qrayti-large"
+
+[[r2_buckets]]
+binding = "TEACHER_UPLOADS"
+bucket_name = "qrayti-teacher-uploads"
+
+[[d1_databases]]
+binding = "CATALOG_DB"
+database_name = "qrayti-catalog"
+database_id = "02ea09f1-1ef6-466a-a1d8-330b11a6e20e"

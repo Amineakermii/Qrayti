@@ -1,0 +1,4 @@
+.editor-page-tools label{margin:14px 0}.editor-page-tools select{max-width:100%}.editor-page-tools h3{margin-top:24px}
+.editor-popup-actions{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.editor-popup-actions button{font-size:12px}
+.editor-inventory{display:grid;gap:6px;max-height:300px;overflow:auto;margin-top:12px;overscroll-behavior:contain}
+.editor-inventory button{display:grid;gap:5px;text-align:start;min-width:0;padding:12px}.editor-inventory button span{white-space:normal;overflow-wrap:anywhere;font-weight:500;line-height:1.6}.editor-inventory small{font-size:10px;color:var(--muted)}

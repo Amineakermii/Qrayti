@@ -1,0 +1,5 @@
+import {json} from '../../_lib/common.js';
+import {adminGuard,readJSON} from '../../_lib/site-content.js';
+import {ensureSettings} from '../../_lib/mascot-config.js';
+import {DEFAULT_FAQ_CONFIG,normalizeFaqConfig} from '../../_lib/faq-defaults.js';
+export async function onRequest(c){const a=await adminGuard(c);if(!a.ok)return a.response;const db=c.env.CATALOG_DB;await ensureSettings(db);if(c.request.method==='GET'){const row=await db.prepare("SELECT value_json FROM app_settings WHERE key='faq'").first();return json({config:row?JSON.parse(row.value_json):DEFAULT_FAQ_CONFIG});}if(c.request.method==='PUT'){try{const b=await readJSON(c.request),config=normalizeFaqConfig(b.config);await db.prepare("INSERT INTO app_settings (key,value_json,updated_by) VALUES ('faq',?1,?2) ON CONFLICT(key) DO UPDATE SET value_json=excluded.value_json,updated_at=CURRENT_TIMESTAMP,updated_by=excluded.updated_by").bind(JSON.stringify(config),a.email).run();return json({ok:true,config});}catch(e){return json({error:e.message},400);}}return json({error:'Method not allowed'},405);}

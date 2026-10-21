@@ -1,8 +1,8 @@
-const SHELL_CACHE='qrayti-shell-v40';
-const DATA_CACHE='qrayti-data-v40';
+const SHELL_CACHE='qrayti-shell-editor-art-v1';
+const DATA_CACHE='qrayti-data-v41';
 const SHELL=[
-  './','./index.html','./assets/styles.css?v=40','./assets/platform.js?v=39','./assets/catalog-layer.js?v=29','./assets/student-tools.js?v=29',
-  './assets/performance.js?v=29','./assets/app.js?v=40','./assets/v30.css?v=30','./assets/v30-student.js?v=31','./manifest.webmanifest','./assets/icons/qrayti-centered-v39.png','./assets/icons/qrayti-centered-v39-512.png'
+  './','./index.html','./assets/styles.css?v=40','./assets/site-content.css?v=3','./assets/site-content.js?v=4','./assets/platform.js?v=39','./assets/catalog-layer.js?v=42','./assets/student-tools.js?v=29',
+  './assets/performance.js?v=29','./assets/app.js?v=43','./assets/subject-character.css?v=1','./assets/theme-switch.css?v=1','./assets/theme-switch.js?v=1','./assets/v30.css?v=30','./assets/v30-student.js?v=31','./manifest.webmanifest','./assets/icons/qrayti-centered-v39.png','./assets/icons/qrayti-centered-v39-512.png'
 ];
 const DATA_RE=/\/assets\/(?:data(?:-[^/]+)?\.js)$/;
 
@@ -25,7 +25,7 @@ self.addEventListener('fetch',event=>{
 
   // Never cache admin/API traffic or course binaries in the service worker.
   // Admin responses are private and course files can be large.
-  if(url.pathname.startsWith('/admin/') || url.pathname.startsWith('/api/') || url.pathname.includes('/content/') || url.pathname.startsWith('/downloads/')){
+  if(url.pathname==='/teachers' || url.pathname.startsWith('/teachers/') || url.pathname.startsWith('/admin/') || url.pathname.startsWith('/api/') || url.pathname.includes('/content/') || url.pathname.startsWith('/downloads/')){
     event.respondWith(fetch(req));
     return;
   }
@@ -44,7 +44,8 @@ self.addEventListener('fetch',event=>{
         const hit=await cache.match(req);
         if(hit)return hit;
         const resp=await fetch(req);
-        if(resp.ok)cache.put(req,resp.clone());
+        const type=String(resp.headers.get('content-type')||'').toLowerCase();
+        if(resp.ok&&!type.includes('text/html'))cache.put(req,resp.clone());
         return resp;
       }).catch(()=>caches.match(req))
     );

@@ -1,0 +1,39 @@
+/* Scope above legacy icon-button rules; retain the teacher portal's approved 88×46 artwork. */
+:is(#themeBtn,[data-theme-toggle]).qrayti-theme-switch{
+  --switch-sky:#94c9ed;--switch-edge:#5e88b1;
+  position:relative;isolation:isolate;overflow:hidden;display:block;flex:0 0 88px;
+  width:88px;height:46px;min-height:46px;padding:0;border:1px solid var(--switch-edge);border-radius:30px;
+  background:var(--switch-sky);box-shadow:inset 0 2px 4px #17395520;cursor:pointer;direction:ltr;
+  transform:none;animation:none;touch-action:manipulation;
+  transition:background 350ms ease,border-color 350ms ease,box-shadow 180ms ease;
+}
+:root[data-theme=dark] :is(#themeBtn,[data-theme-toggle]).qrayti-theme-switch{--switch-sky:#223458;--switch-edge:#8197b9}
+:is(#themeBtn,[data-theme-toggle]).qrayti-theme-switch:hover{background:var(--switch-sky);transform:none;box-shadow:0 0 0 3px var(--soft-line,#c5d5f6),inset 0 2px 4px #17395520}
+:is(#themeBtn,[data-theme-toggle]).qrayti-theme-switch:active{transform:none}
+:is(#themeBtn,[data-theme-toggle]).qrayti-theme-switch:focus-visible{outline:3px solid var(--focus,#245be2);outline-offset:4px}
+:root[data-theme=dark] #themeBtn.qrayti-theme-switch:focus-visible{outline-color:#b8d0ff}
+.qrayti-theme-switch svg{fill:none;stroke:none;stroke-width:0;pointer-events:none}
+.qrayti-theme-switch>svg{position:absolute;inset:0;width:100%;height:100%;transition:opacity 260ms ease,transform 400ms ease}
+.qrayti-theme-switch .theme-clouds{color:#d6eafa;opacity:1;transform:translateY(0)}
+.qrayti-theme-switch .theme-stars{color:#f1f4ff;opacity:0;transform:translateY(-10px)}
+.qrayti-theme-switch .theme-orb{position:absolute;left:4px;top:4px;width:36px;height:36px;border-radius:50%;box-shadow:0 2px 4px #14244135;pointer-events:none;transform:translateX(0);transition:transform 440ms cubic-bezier(.2,.8,.25,1.15)}
+.qrayti-theme-switch .theme-orb svg{width:100%;height:100%;display:block}
+.qrayti-theme-switch .theme-sun,.qrayti-theme-switch .theme-moon{transform-origin:18px 18px;transition:opacity 250ms ease,transform 440ms ease}
+.qrayti-theme-switch .theme-moon{opacity:0;transform:rotate(-35deg)}
+:root[data-theme=dark] .qrayti-theme-switch .theme-orb{transform:translateX(42px)}
+:root[data-theme=dark] .qrayti-theme-switch .theme-clouds{opacity:0;transform:translateY(15px)}
+:root[data-theme=dark] .qrayti-theme-switch .theme-stars{opacity:1;transform:translateY(0)}
+:root[data-theme=dark] .qrayti-theme-switch .theme-sun{opacity:0;transform:rotate(35deg)}
+:root[data-theme=dark] .qrayti-theme-switch .theme-moon{opacity:1;transform:rotate(0)}
+.top-actions{align-items:center}
+.language-bar{align-items:center;gap:8px}
+/* Give the larger control room instead of squeezing the brand or shrinking touch targets. */
+@media(max-width:600px){
+  .topbar:has(#themeBtn){height:auto;min-height:var(--header);flex-wrap:wrap;gap:8px;padding-block:10px}
+  .topbar:has(#themeBtn) .brand{gap:6px}
+  .topbar:has(#themeBtn) .brand-tail{display:none}
+  .topbar:has(#themeBtn) .top-actions{gap:6px}
+  .topbar:has(#themeBtn) .icon-btn:not(#themeBtn){width:44px;height:44px}
+}
+@media(max-width:550px){.language-bar button[data-lang]{font-size:12px;padding:7px;min-height:44px}.language-bar .flag{width:22px}}
+@media(prefers-reduced-motion:reduce){.qrayti-theme-switch,.qrayti-theme-switch *{transition:none!important;animation:none!important}}

@@ -1,0 +1,4 @@
+import {json,safeInt} from '../../_lib/common.js';
+import {adminGuard} from '../../_lib/site-content.js';
+import {rowToAdmin} from '../../_lib/catalog-db.js';
+export async function onRequestGet(c){const a=await adminGuard(c);if(!a.ok)return a.response;const p=new URL(c.request.url).searchParams,q='%'+(p.get('q')||'').slice(0,200)+'%',status=p.get('status')||'',limit=safeInt(p.get('limit'),1,500,50),offset=safeInt(p.get('offset'),0,1000000,0);const where="WHERE (display_name LIKE ?1 OR subject_name LIKE ?1 OR group_name LIKE ?1) AND (?2='' OR status=?2)";const [r,count]=await c.env.CATALOG_DB.batch([c.env.CATALOG_DB.prepare('SELECT * FROM content_files '+where+' ORDER BY updated_at DESC,id LIMIT ?3 OFFSET ?4').bind(q,status,limit,offset),c.env.CATALOG_DB.prepare('SELECT COUNT(*) total FROM content_files '+where).bind(q,status)]);return json({items:r.results.map(rowToAdmin),total:count.results[0].total});}

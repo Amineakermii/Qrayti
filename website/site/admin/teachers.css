@@ -1,0 +1,34 @@
+.teacher-workspace{min-width:0}
+.teacher-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,1fr);gap:24px;align-items:start}
+.teacher-layout>div{display:grid;gap:24px;min-width:0}
+.teacher-layout .card{margin:0;min-width:0}
+.teacher-layout p,.teacher-layout h3,.teacher-layout small{overflow-wrap:anywhere}
+.teacher-layout h3{margin:0 0 8px;font-size:1.05rem}
+.teacher-section-head,.teacher-access,.teacher-submission{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.teacher-section-head h2{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.teacher-access,.teacher-submission{padding:18px 0;border-block-end:1px solid var(--line)}
+.teacher-access:last-child,.teacher-submission:last-child{border:0}
+.teacher-access-list,.teacher-submissions{max-height:36rem;overflow:auto;overscroll-behavior:contain;padding-inline:4px;scrollbar-gutter:stable}
+.teacher-access>div:first-child,.teacher-submission>div{min-width:0;flex:1}
+.teacher-access .actions{flex-direction:column;align-items:stretch;flex-shrink:0}
+.teacher-access p,.teacher-submission p{margin:8px 0}
+.teacher-access small,.teacher-submission small{color:var(--muted);line-height:1.6}
+.teacher-submission.selected{border-inline-start:3px solid var(--primary);padding-inline-start:12px}
+.teacher-filters{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.teacher-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px;min-width:0;border:0;padding:0;margin:0;grid-column:1/-1}
+.teacher-fields label,.teacher-invitations label,.teacher-filters label{min-width:0}
+.teacher-fields input,.teacher-fields textarea,.teacher-fields select,.teacher-invitations input,.teacher-filters select{width:100%;min-width:0;box-sizing:border-box}
+.teacher-fields:disabled{opacity:.75}
+.teacher-warning,.teacher-secret{padding:16px;border:1px solid var(--soft-line);border-radius:var(--radius);background:var(--soft);color:var(--ink);line-height:1.65}
+.teacher-warning button{margin-block-start:12px;display:block}
+.teacher-secret{margin-block-start:20px}
+.teacher-secret .actions{margin-block-start:12px}
+.teacher-error{padding:16px;margin-block-end:20px;border:1px solid var(--danger-line);border-radius:var(--radius);background:var(--danger-bg);color:var(--danger);line-height:1.6;overflow-wrap:anywhere}
+.teacher-error[hidden]{display:none}
+.teacher-danger{color:var(--danger);border-color:var(--danger-line)}
+.teacher-download{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+.teacher-layout button,.teacher-layout input,.teacher-layout select{min-height:44px}
+.teacher-layout button{white-space:normal}
+.teacher-result{padding:12px;background:var(--good-bg);color:var(--good-ink);border-radius:10px}
+@media(max-width:1200px){.teacher-layout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){.teacher-fields,.teacher-filters{grid-template-columns:minmax(0,1fr)}.teacher-access{flex-direction:column}.teacher-access .actions{flex-direction:row;flex-wrap:wrap}.teacher-layout{gap:16px}.teacher-layout>div{gap:16px}.teacher-submission{flex-wrap:wrap}.teacher-submission>div{flex-basis:100%}.teacher-review .actions{align-items:stretch;flex-direction:column}.teacher-access-list,.teacher-submissions{max-height:28rem}}

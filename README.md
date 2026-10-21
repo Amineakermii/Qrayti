@@ -14,6 +14,12 @@
 <img src="https://img.shields.io/badge/version-1.12.0-c319a8" alt="Version 1.12.0">
 </p>
 
+## Edit in the cloud
+
+The current website, admin and teacher portal source lives in `website/`.
+Start with [Cloud setup and handoff](docs/CLOUD-HANDOFF.md) and [agent instructions](AGENTS.md).
+Course documents and secrets are intentionally excluded. **Restore and verify course assets before deploying a fresh checkout.**
+
 ## Built for real student life
 
 Qrayti brings course discovery, native readers, offline downloads, favourites, history, semester calculations and beginner programming games into one fast RTL-first Android experience. The app and website share a Cloudflare-backed catalogue.
