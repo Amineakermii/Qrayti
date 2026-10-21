@@ -1,0 +1,7 @@
+.qrayti-managed-logo{width:100%;height:100%;object-fit:contain;border-radius:inherit}
+.landing-screen .qrayti-home-photo{margin:20px 0 0;max-width:480px;border-radius:20px;overflow:hidden}
+.qrayti-home-photo img{display:block;width:100%;height:auto;max-height:340px;object-fit:contain}
+.qrayti-edit-selected{outline:3px solid #235ceb!important;outline-offset:5px!important;cursor:crosshair!important}
+html.qrayti-edit-select .landing-screen *,html.qrayti-edit-select .screen *{cursor:crosshair!important}
+html.qrayti-edit-select .campus-marquee-track{animation-play-state:paused!important}
+html.qrayti-edit-select footer *,html.qrayti-edit-select .modal *,html.qrayti-edit-select [data-i18n]{cursor:crosshair!important}

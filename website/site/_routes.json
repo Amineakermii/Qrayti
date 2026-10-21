@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*",
+    "/admin/*",
+    "/content/lcef10311.pdf",
+    "/content/y1s2f0090.pdf"
+  ],
+  "exclude": []
+}

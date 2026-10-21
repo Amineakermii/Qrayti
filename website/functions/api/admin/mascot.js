@@ -1,0 +1,3 @@
+import {requireAdmin} from '../../_lib/auth.js';
+import {json,getMascotConfig,saveMascotConfig} from '../../_lib/mascot-config.js';
+export async function onRequest(context){const a=await requireAdmin(context);if(!a.ok)return a.response;if(!context.env.CATALOG_DB)return json({error:'CATALOG_DB missing'},503);if(context.request.method==='GET')return json({ok:true,config:await getMascotConfig(context.env.CATALOG_DB)});if(context.request.method==='PUT'){const body=await context.request.json().catch(()=>({}));return json({ok:true,config:await saveMascotConfig(context.env.CATALOG_DB,body.config||{})})}return json({error:'Method not allowed'},405,{Allow:'GET, PUT'});}

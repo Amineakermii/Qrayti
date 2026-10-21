@@ -63,94 +63,108 @@
     common:{label:'Tronc commun',ar:'جذع مشترك'}
   };
 
-  // Easy visual identity for every subject. These are intentionally simple mascots,
-  // so the student can recognise a subject before reading its full title.
-  const subjectVisuals={
-    probabilite:{emoji:'🧮',tint:'probabilite',short:'Math'},
-    conception:{emoji:'🧩',tint:'conception',short:'CSI'},
-    java:{emoji:'☕',tint:'java',short:'Java'},
-    graphes:{emoji:'🕸️',tint:'graphes',short:'Graphes'},
-    automates:{emoji:'🤖',tint:'automates',short:'TLA'},
-    bdd:{emoji:'🗄️',tint:'bdd',short:'BDD'},
-    reseau:{emoji:'🌐',tint:'reseau',short:'Réseau'},
-    gestion:{emoji:'💼',tint:'gestion',short:'Gestion'},
-    anglais:{emoji:'💬',tint:'anglais',short:'English'},
-    framework:{emoji:'🧰',tint:'framework',short:'C#'},
-    cpp:{emoji:'⚙️',tint:'cpp',short:'C++'},
-    webdesign:{emoji:'🎨',tint:'framework',short:'WEB'},
-    web2:{emoji:'🌍',tint:'reseau',short:'WEB'},
-    systemes2:{emoji:'🐧',tint:'cpp',short:'Linux'},
-    ia2:{emoji:'🧠',tint:'automates',short:'IA'},
-    adminbdd2:{emoji:'🗃️',tint:'bdd',short:'Admin DB'},
-    compilation2:{emoji:'⚙️',tint:'cpp',short:'Compile'},
-    indexation2:{emoji:'🔎',tint:'conception',short:'Index'},
-    entrepots2:{emoji:'🏢',tint:'bdd',short:'DW'},
-    tests2:{emoji:'🧪',tint:'probabilite',short:'Tests'},
-    java2:{emoji:'☕',tint:'java',short:'Java 2'},
-    entrepreneuriat2:{emoji:'🚀',tint:'gestion',short:'Business'},
-    y1_asd:{emoji:'🧠',tint:'conception',short:'ASD'},
-    y1_c:{emoji:'💻',tint:'cpp',short:'C'},
-    y1_cpp_gabes:{emoji:'⚙️',tint:'cpp',short:'C++'},
-    y1_algebre:{emoji:'∑',tint:'probabilite',short:'Algèbre'},
-    y1_analyse:{emoji:'📈',tint:'graphes',short:'Analyse'},
-    y1_logique:{emoji:'🔗',tint:'automates',short:'Logique'},
-    y1_multimedia:{emoji:'🎬',tint:'framework',short:'Multimédia'},
-    y1_os:{emoji:'🖥️',tint:'cpp',short:'OS'},
-    y1_arch:{emoji:'🧱',tint:'reseau',short:'Arch'},
-    y1_comm:{emoji:'🗣️',tint:'anglais',short:'Com'},
-    y1_asd2:{emoji:'🧠',tint:'conception',short:'ASD2'},
-    y1_c2:{emoji:'🧰',tint:'cpp',short:'C'},
-    y1_cpp2_gabes:{emoji:'⚙️',tint:'cpp',short:'C++'},
-    y1_francais2_gabes:{emoji:'🇫🇷',tint:'anglais',short:'FR'},
-    y1_python2:{emoji:'🐍',tint:'java',short:'Python'},
-    y1_algebre2:{emoji:'∑',tint:'probabilite',short:'Algèbre 2'},
-    y1_analyse2:{emoji:'📈',tint:'graphes',short:'Analyse 2'},
-    y1_bdd2:{emoji:'🗄️',tint:'bdd',short:'BDD'},
-    y1_reseau2:{emoji:'🌐',tint:'reseau',short:'Réseaux'},
-    y1_os2:{emoji:'🖥️',tint:'cpp',short:'OS2'},
-    y1_comm2:{emoji:'💬',tint:'anglais',short:'Com 2'},
-    lt_algo1:{emoji:'🧠',tint:'conception',short:'Algo'},
-    lt_algebre1:{emoji:'∑',tint:'probabilite',short:'Algèbre'},
-    lt_analyse1:{emoji:'📈',tint:'graphes',short:'Analyse'},
-    lt_circuit1:{emoji:'⚡',tint:'java',short:'Circuit'},
-    lt_electnum1:{emoji:'🔢',tint:'automates',short:'Num'},
-    lt_electrostat1:{emoji:'🧲',tint:'reseau',short:'E&M'},
-    lt_english1:{emoji:'💬',tint:'anglais',short:'English'},
-    lt_meca1:{emoji:'⚙️',tint:'cpp',short:'Méca'},
-    lt_os1:{emoji:'🖥️',tint:'cpp',short:'OS'},
-    lt_comm1:{emoji:'🗣️',tint:'anglais',short:'Com'},
-    lt_algebre2:{emoji:'∑',tint:'probabilite',short:'Algèbre 2'},
-    lt_analyse2:{emoji:'📈',tint:'graphes',short:'Analyse 2'},
-    lt_bdd2:{emoji:'🗄️',tint:'bdd',short:'BDD'},
-    lt_electroanalog2:{emoji:'〰️',tint:'java',short:'Analog'},
-    lt_em2:{emoji:'🧲',tint:'reseau',short:'EM'},
-    lt_english2:{emoji:'💬',tint:'anglais',short:'English'},
-    lt_fen2:{emoji:'🔌',tint:'automates',short:'FEN'},
-    lt_progadv2:{emoji:'☕',tint:'java',short:'Java'},
-    lt_comm2:{emoji:'🗣️',tint:'anglais',short:'Com 2'},
-    lt_thermo2:{emoji:'🌡️',tint:'gestion',short:'Thermo'},
-    lt_docs2:{emoji:'🗓️',tint:'conception',short:'LT'},
-    lce_asd1:{emoji:'🧠',tint:'conception',short:'ASD1'},
-    lce_algebre1:{emoji:'∑',tint:'probabilite',short:'ALG1'},
-    lce_analyse1:{emoji:'📈',tint:'graphes',short:'ANA1'},
-    lce_elec1:{emoji:'⚡',tint:'java',short:'ELEC'},
-    lce_prog1:{emoji:'💻',tint:'cpp',short:'C'},
-    lce_prop1:{emoji:'📡',tint:'reseau',short:'PROP'},
-    lce_os1:{emoji:'🐧',tint:'cpp',short:'OS1'},
-    lce_logic1:{emoji:'🔢',tint:'automates',short:'LOG'},
-    lce_comm1:{emoji:'🗣️',tint:'anglais',short:'COM1'},
-    lce_asd2:{emoji:'🧠',tint:'conception',short:'ASD2'},
-    lce_algebre2:{emoji:'∑',tint:'probabilite',short:'ALG2'},
-    lce_analyse2:{emoji:'📈',tint:'graphes',short:'ANA2'},
-    lce_english2:{emoji:'💬',tint:'anglais',short:'ENG2'},
-    lce_arch2:{emoji:'🧱',tint:'reseau',short:'ARCH'},
-    lce_fe2:{emoji:'🔌',tint:'java',short:'FE'},
-    lce_prog2:{emoji:'🧰',tint:'cpp',short:'C2'},
-    lce_os2:{emoji:'🖥️',tint:'cpp',short:'OS2'},
-    lce_comm2:{emoji:'🗣️',tint:'anglais',short:'COM2'},
-    lce_signal2:{emoji:'〰️',tint:'graphes',short:'SIGNAL'},
-    lce_trans2:{emoji:'📶',tint:'reseau',short:'TRANS'}
-  };
+  // Approved subject illustrations, shared with the Android SubjectArtMap.
+  // Only these explicit catalog IDs can become asset paths; remote IDs use a
+  // category illustration rather than an untrusted or missing image URL.
+  const subjectArtwork=Object.freeze({
+    __program__:'subject___program__.webp',
+    adminbdd2:'subject_adminbdd2.webp',
+    anglais:'subject_anglais.webp',
+    automates:'subject_automates.webp',
+    bdd:'subject_bdd.webp',
+    compilation2:'subject_compilation2.webp',
+    conception:'subject_conception.webp',
+    cpp:'subject_cpp.webp',
+    entrepots2:'subject_entrepots2.webp',
+    entrepreneuriat2:'subject_entrepreneuriat2.webp',
+    framework:'subject_framework.webp',
+    gestion:'subject_gestion.webp',
+    graphes:'subject_graphes.webp',
+    ia2:'subject_ia2.webp',
+    indexation2:'subject_indexation2.webp',
+    java:'subject_java.webp',
+    java2:'subject_java2.webp',
+    lce_algebre1:'subject_lce_algebre1.webp',
+    lce_algebre2:'subject_lce_algebre2.webp',
+    lce_analyse1:'subject_lce_analyse1.webp',
+    lce_analyse2:'subject_lce_analyse2.webp',
+    lce_arch2:'subject_lce_arch2.webp',
+    lce_asd1:'subject_lce_asd1.webp',
+    lce_asd2:'subject_lce_asd2.webp',
+    lce_comm1:'subject_lce_comm1.webp',
+    lce_comm2:'subject_lce_comm2.webp',
+    lce_elec1:'subject_lce_elec1.webp',
+    lce_english2:'subject_lce_english2.webp',
+    lce_fe2:'subject_lce_fe2.webp',
+    lce_logic1:'subject_lce_logic1.webp',
+    lce_os1:'subject_lce_os1.webp',
+    lce_os2:'subject_lce_os2.webp',
+    lce_prog1:'subject_lce_prog1.webp',
+    lce_prog2:'subject_lce_prog2.webp',
+    lce_prop1:'subject_lce_prop1.webp',
+    lce_signal2:'subject_lce_signal2.webp',
+    lce_trans2:'subject_lce_trans2.webp',
+    lt_algebre1:'subject_lt_algebre1.webp',
+    lt_algebre2:'subject_lt_algebre2.webp',
+    lt_algo1:'subject_lt_algo1.webp',
+    lt_analyse1:'subject_lt_analyse1.webp',
+    lt_analyse2:'subject_lt_analyse2.webp',
+    lt_bdd2:'subject_lt_bdd2.webp',
+    lt_circuit1:'subject_lt_circuit1.webp',
+    lt_comm1:'subject_lt_comm1.webp',
+    lt_comm2:'subject_lt_comm2.webp',
+    lt_docs2:'subject_lt_docs2.webp',
+    lt_electnum1:'subject_lt_electnum1.webp',
+    lt_electroanalog2:'subject_lt_electroanalog2.webp',
+    lt_electrostat1:'subject_lt_electrostat1.webp',
+    lt_em2:'subject_lt_em2.webp',
+    lt_english1:'subject_lt_english1.webp',
+    lt_english2:'subject_lt_english2.webp',
+    lt_fen2:'subject_lt_fen2.webp',
+    lt_meca1:'subject_lt_meca1.webp',
+    lt_os1:'subject_lt_os1.webp',
+    lt_progadv2:'subject_lt_progadv2.webp',
+    lt_thermo2:'subject_lt_thermo2.webp',
+    probabilite:'subject_probabilite.webp',
+    reseau:'subject_reseau.webp',
+    systemes2:'subject_systemes2.webp',
+    tests2:'subject_tests2.webp',
+    webdesign:'subject_webdesign.webp',
+    y1_algebre:'subject_y1_algebre.webp',
+    y1_algebre2:'subject_y1_algebre2.webp',
+    y1_analyse:'subject_y1_analyse.webp',
+    y1_analyse2:'subject_y1_analyse2.webp',
+    y1_arch:'subject_y1_arch.webp',
+    y1_asd:'subject_y1_asd.webp',
+    y1_asd2:'subject_y1_asd2.webp',
+    y1_bdd2:'subject_y1_bdd2.webp',
+    y1_c:'subject_y1_c.webp',
+    y1_c2:'subject_y1_c2.webp',
+    y1_comm:'subject_y1_comm.webp',
+    y1_comm2:'subject_y1_comm2.webp',
+    y1_cpp2_gabes:'subject_y1_cpp2_gabes.webp',
+    y1_cpp_gabes:'subject_y1_cpp_gabes.webp',
+    y1_francais2_gabes:'subject_y1_francais2_gabes.webp',
+    y1_logique:'subject_y1_logique.webp',
+    y1_multimedia:'subject_y1_multimedia.webp',
+    y1_os:'subject_y1_os.webp',
+    y1_os2:'subject_y1_os2.webp',
+    y1_python2:'subject_y1_python2.webp',
+    y1_reseau2:'subject_y1_reseau2.webp',
+    web2:'subject_webdesign.webp'
+  });
+  function subjectArtworkFor(s){
+    if(Object.hasOwn(subjectArtwork,s.id))return subjectArtwork[s.id];
+    const key=`${s.id||''} ${s.name||''} ${s.ar||''}`.toLowerCase();
+    if(/algebra|algèbre|algebre|analyse|math|probab|statist|graph|جبر|رياض|تحليل/.test(key))return 'subject_art_math.webp';
+    if(/database|base.*donn|bdd|sql|قواعد.*بيانات/.test(key))return 'subject_art_database.webp';
+    if(/network|réseau|reseau|transmission|شبك/.test(key))return 'subject_art_networks.webp';
+    if(/english|anglais|français|francais|communication|لغة|تواصل|إنجليز|فرنس/.test(key))return 'subject_art_languages.webp';
+    if(/web|design|multim|ويب|تصميم/.test(key))return 'subject_art_web_design.webp';
+    if(/circuit|electr|électr|signal|physi|meca|thermo|إلكتر|كهرب/.test(key))return 'subject_art_electronics.webp';
+    if(/program|algorithm|algo|python|java|compil|برمج|خوارزم/.test(key))return 'subject_art_programming.webp';
+    return 'subject_art_general.webp';
+  }
 
   const campusLogos=[
     {src:'assets/logos/gafsa.png',alt:'كلية العلوم بقفصة',label:'علوم قفصة',url:'https://fsgf.rnu.tn/'},
@@ -244,8 +258,7 @@
   function fileLabel(f){return f.displayName||f.name}
 
   function subjectThumb(s){
-    const v=subjectVisuals[s.id]||{emoji:'📘',tint:'default',short:s.abbr||'SUB'};
-    return `<div class="subject-thumb subject-${v.tint}" aria-hidden="true"><span class="subject-emoji">${v.emoji}</span><small>${esc(v.short)}</small></div>`;
+    return `<div class="subject-thumb subject-art" aria-hidden="true"><img class="subject-art-image" src="assets/subject-art/${subjectArtworkFor(s)}" alt="" loading="lazy" decoding="async" width="720" height="480"><small>${esc(s.abbr||s.name||'')}</small></div>`;
   }
   function sourceText(f){
     const academic=[f.sourceUniversity,f.sourceInstitution].filter(Boolean).join(' — ');
@@ -608,7 +621,7 @@
     const genericCourseFiles=cat.id==='cours'?names.filter(isGenericCourseGroup).flatMap(name=>grouped[name]).sort((a,b)=>natural(fileLabel(a)).localeCompare(natural(fileLabel(b)))):[];
     const regularNames=cat.id==='cours'?names.filter(name=>!isGenericCourseGroup(name)):names;
     const cards=regularNames.map(name=>{const meta=groupMeta(s.id,name,grouped[name]);if(cat.id==='cours'&&meta.topic)return `<button class="group-card chapter-card" data-go="/files?licence=${lic}&subject=${encodeURIComponent(s.id)}&category=${encodeURIComponent(cat.id)}&group=${encodeURIComponent(name)}&year=${year}&track=${encodeURIComponent(q.track||'common')}&semester=${sem}"><div class="chapter-card-top"><span class="chapter-number">${esc(meta.chapter)}</span><span class="group-count">${fileCount(grouped[name].length)}</span></div><h3>${esc(meta.topic)}</h3><p>إقرا محتوى الجزء والملفات المرتبطة بيه.</p><span class="card-arrow">ادخل ←</span></button>`;return `<button class="group-card" data-go="/files?licence=${lic}&subject=${encodeURIComponent(s.id)}&category=${encodeURIComponent(cat.id)}&group=${encodeURIComponent(name)}&year=${year}&track=${encodeURIComponent(q.track||'common')}&semester=${sem}"><div class="group-row"><h3>${esc(name)}</h3><span class="group-count">${fileCount(grouped[name].length)}</span></div><p>شوف الملفات الموجودة في المجموعة هاذي.</p><span class="card-arrow">افتح ←</span></button>`}).join('');
-    const directCourses=genericCourseFiles.length?`<section class="inline-course-section"><div class="inline-course-heading"><div><span class="chapter-number inline-course-badge">كور فرعي</span><h2>كور إضافية من غير شابتر محدّد</h2></div><small>${fileCount(genericCourseFiles.length)}</small></div><p class="inline-course-note">هاذم كانوا داخل مجموعة اسمها «Cours». أظهرناهم مباشرة باش ما تلقاش Cours داخل Cours.</p><div class="inline-course-grid">${genericCourseFiles.map(inlineCourseFile).join('')}</div></section>`:'';
+    const directCourses=genericCourseFiles.length?`<section class="inline-course-section"><div class="inline-course-heading"><div><span class="chapter-number inline-course-badge">كور فرعي</span><h2>كور إضافية من غير شابتر محدّد</h2></div><small>${fileCount(genericCourseFiles.length)}</small></div><div class="inline-course-grid">${genericCourseFiles.map(inlineCourseFile).join('')}</div></section>`:'';
     screen(`${flowHead(`/subject?licence=${lic}&id=${encodeURIComponent(s.id)}&year=${year}&track=${encodeURIComponent(q.track||'common')}&semester=${sem}`,'المحتوى')}<div class="context-head">${subjectThumb(s)}<span class="context-kicker">${esc(cat.ar||categoryMeaning[cat.id]||cat.name)}</span><h1>${esc(s.name)}</h1><p>${cat.id==='cours'?'الشابترات مرتّبة وحدها، والكور اللي ما عندهاش شابتر واضح تظهر مباشرة كـ«كور فرعي».':'اختار المجموعة اللي تحب عليها.'}</p></div><div class="group-grid ${cat.id==='cours'?'chapter-grid':''}">${cards}</div>${directCourses}`);
   }
 
@@ -697,7 +710,7 @@
   let owlAutoTimer=0;
   const owlStudyPaths=new Set(['/subject','/groups','/tp-teacher','/files','/videos','/language-check','/average']);
   const DEFAULT_OWL_CONFIG={
-    baseVersion:24,enabled:true,name:'حما غراب',emoji:'🦉',minDelaySec:42,maxDelaySec:105,maxPerSession:3,
+    baseVersion:24,enabled:false,name:'حما غراب',emoji:'🦉',minDelaySec:42,maxDelaySec:105,maxPerSession:3,
     scenarios:[
       {id:'life',enabled:true,weight:3,prompt:'توا هذا وضع؟ هذي حياة؟ 😭',choices:[{label:'خلّيني نقرا يا حما',reply:'إي باهي باهي… كمّل قبل ما نزيد نهبطلك المعنويات 😭'},{label:'عندك حل؟',reply:'عندي: سكّر التليفون واقرا. حلّ عبقري نعرف 😎'}]},
       {id:'kantar',enabled:true,weight:2,prompt:'نمشي نخدم كنتاري أحسن من تحضير للعوام؟ نشوف نلقى ليهم خدمة ولا لا مبعد 😭',choices:[{label:'امشي اخدم 😂',reply:'لا لا نستنى… يمكن الشابتر هذا يطلع فيه مستقبل.'},{label:'اقعد ساكت',reply:'حاضر يا أستاذ. نرجعلك بعد شوية 👀'}]},
@@ -726,18 +739,35 @@
     const talk=owl.querySelector('.owl-talk'),choices=(scenario.choices||[]).slice(0,3);
     talk.innerHTML=`<small class="owl-name">${esc(owlConfig.name||'حما غراب')}</small><b>${esc(scenario.prompt)}</b><div class="owl-choice-row">${choices.length?choices.map((c,i)=>`<button data-owl-choice="${i}">${esc(c.label||'جاوب')}</button>`).join(''):'<button data-owl-close>برا خلّيني نقرا 😭</button>'}</div>`;
   }
+  function hamaCrowArt(){
+    return `<svg class="hama-crow" viewBox="0 0 100 100" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <ellipse class="crow-shadow" cx="51" cy="89" rx="29" ry="5"/>
+      <path class="crow-feet" d="M40 79v9m-6 2 6-2 6 2m15-11v9m-6 2 6-2 6 2"/>
+      <path class="crow-wing crow-wing-back" d="M31 46C13 38 8 44 13 59c4 10 11 15 22 16Z"/>
+      <path class="crow-tail" d="m60 73 17 11-4-18Z"/>
+      <path class="crow-body" d="M25 49c-1-12 5-24 18-28l-2-8 10 5 6-7 3 11c14 4 21 16 20 31-1 21-12 32-28 32-17 0-28-13-27-36Z"/>
+      <path class="crow-bib" d="M33 59c11 7 27 7 38-1 1 13-7 22-19 22-11 0-18-8-19-21Z"/>
+      <path class="crow-wing crow-wing-front" d="M70 48c19-15 23-8 17 8-4 10-9 15-18 18"/>
+      <path class="crow-brow" d="m33 35 10 2m17 0 10-2"/>
+      <g class="crow-eyes"><ellipse cx="40" cy="45" rx="8" ry="10"/><ellipse cx="62" cy="45" rx="8" ry="10"/>
+      <g class="crow-pupils"><ellipse cx="43" cy="46" rx="3.5" ry="5"/><ellipse cx="65" cy="46" rx="3.5" ry="5"/>
+      <circle class="crow-glint" cx="44" cy="44" r="1.2"/><circle class="crow-glint" cx="66" cy="44" r="1.2"/></g></g>
+      <path class="crow-beak" d="m46 57 8-7 13 9-13 5Z"/><path class="crow-smirk" d="m54 59 9-1"/>
+      <path class="crow-cheek" d="m28 56 5 2m37 0 5-2"/>
+    </svg>`;
+  }
   function spawnStudyOwl(){
     owlTimer=0;if(owlConfig.enabled===false||owlCount()>=Math.max(1,Number(owlConfig.maxPerSession)||3)||!owlStudyPaths.has(parseRoute().path)||document.getElementById('studyOwl'))return;
     const scenario=pickOwlScenario();if(!scenario)return;const owl=document.createElement('div'),side=Math.random()<.5?'owl-left':'owl-right',top=Math.round(25+Math.random()*42);
     sessionStorage.setItem('qraytiOwlCount',String(owlCount()+1));owl.id='studyOwl';owl.className=`study-owl ${side}`;owl.style.setProperty('--owl-top',`${top}vh`);owl.setAttribute('aria-live','polite');owl.dataset.scenario=scenario.id||'';
-    owl.innerHTML=`<div class="owl-body" aria-hidden="true"><span class="owl-emoji">${esc(owlConfig.emoji||'🦉')}</span></div><div class="owl-talk"></div>`;document.body.appendChild(owl);renderOwlTalk(owl,scenario);requestAnimationFrame(()=>requestAnimationFrame(()=>owl.classList.add('owl-arrive')));owlAutoTimer=setTimeout(()=>removeStudyOwl(true),18000);
+    owl.innerHTML=`<div class="owl-body" aria-hidden="true">${hamaCrowArt()}</div><div class="owl-talk"></div>`;document.body.appendChild(owl);renderOwlTalk(owl,scenario);requestAnimationFrame(()=>requestAnimationFrame(()=>owl.classList.add('owl-arrive')));owlAutoTimer=setTimeout(()=>removeStudyOwl(true),18000);
   }
   function syncStudyOwl(path){
     clearTimeout(owlTimer);owlTimer=0;if(owlConfig.enabled===false||owlCount()>=Math.max(1,Number(owlConfig.maxPerSession)||3))return;
     if(!owlStudyPaths.has(path)){const owl=document.getElementById('studyOwl');if(owl)owl.remove();return}if(document.getElementById('studyOwl'))return;owlTimer=setTimeout(spawnStudyOwl,owlDelay());
   }
   function answerStudyOwl(index){
-    const owl=document.getElementById('studyOwl');if(!owl)return;const scenario=(owlConfig.scenarios||[]).find(x=>String(x.id||'')===String(owl.dataset.scenario||''));const choice=scenario?.choices?.[Number(index)];if(!choice)return removeStudyOwl(true);clearTimeout(owlAutoTimer);const talk=owl.querySelector('.owl-talk');talk.innerHTML=`<small class="owl-name">${esc(owlConfig.name||'حما غراب')}</small><b>${esc(choice.reply||'باهي 😒')}</b><button data-owl-close>سكر وخليّني نكمّل</button>`;owlAutoTimer=setTimeout(()=>removeStudyOwl(true),9500);
+    const owl=document.getElementById('studyOwl');if(!owl)return;const scenario=(owlConfig.scenarios||[]).find(x=>String(x.id||'')===String(owl.dataset.scenario||''));const choice=scenario?.choices?.[Number(index)];if(!choice)return removeStudyOwl(true);clearTimeout(owlAutoTimer);owl.classList.add('owl-answered');const talk=owl.querySelector('.owl-talk');talk.innerHTML=`<small class="owl-name">${esc(owlConfig.name||'حما غراب')}</small><b>${esc(choice.reply||'باهي 😒')}</b><button data-owl-close>سكر وخليّني نكمّل</button>`;owlAutoTimer=setTimeout(()=>removeStudyOwl(true),9500);
   }
 
   function showModal(id){const m=document.getElementById(id);m.classList.add('show');m.setAttribute('aria-hidden','false');document.documentElement.classList.add('qrayti-modal-open');document.body.style.overflow='hidden'}
@@ -970,7 +1000,7 @@
     if(e.target.closest('#averageBtn')){const r=parseRoute();go(averagePath(r.q));return}
     const langAnswer=e.target.closest('[data-lang-answer]');if(langAnswer){answerLanguageQuestion(langAnswer.dataset.langAnswer);return}
     if(e.target.closest('#langRetryBtn')){restartLanguageQuiz();return}
-    const themeButton=e.target.closest('#themeBtn'); if(themeButton){themeButton.classList.remove('theme-pop');void themeButton.offsetWidth;themeButton.classList.add('theme-pop');theme();return}
+    const themeButton=e.target.closest('#themeBtn'); if(themeButton){theme();return}
     if(e.target.closest('#installBtn')||e.target.closest('#installConfirmBtn')){installQrayti();return}
     if(e.target.closest('#iosInstallCard')){installIosQrayti();return}
     const owlChoice=e.target.closest('[data-owl-choice]');if(owlChoice){answerStudyOwl(owlChoice.dataset.owlChoice);return}

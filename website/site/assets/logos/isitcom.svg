@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="ISITCom">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2563eb"/><stop offset="1" stop-color="#14b8a6"/></linearGradient></defs>
+  <rect x="8" y="8" width="164" height="164" rx="38" fill="white"/>
+  <rect x="15" y="15" width="150" height="150" rx="32" fill="url(#g)" opacity=".12"/>
+  <path d="M43 72 90 43l47 29v8H43zM50 85h12v36H50zm23 0h12v36H73zm23 0h12v36H96zm23 0h12v36h-12zM42 126h96v11H42z" fill="url(#g)"/>
+  <circle cx="90" cy="65" r="7" fill="#fff" stroke="#2563eb" stroke-width="3"/>
+  <text x="90" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#173b70">ISITCom</text>
+</svg>

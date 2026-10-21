@@ -1,0 +1,20 @@
+{
+  "name": "qrayti-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev site --ip 127.0.0.1",
+    "test": "node --test --test-concurrency=1 ../tools/cloud-content.test.mjs tests/site-edit-coverage.test.mjs tests/teacher-file-validation.test.mjs tests/teacher-upload-recovery.test.mjs tests/subject-character.browser.test.mjs tests/teacher-portal-ui.browser.mjs tests/theme-switch.browser.mjs",
+    "test:teachers": "node --test tests/teacher-portal.test.mjs",
+    "content:restore": "node ../tools/cloud-content.mjs restore",
+    "content:verify": "node ../tools/cloud-content.mjs verify",
+    "release:check": "npm run content:verify && node ../tools/verify-website-release-assets.mjs site"
+  },
+  "dependencies": {
+    "fflate": "0.8.3"
+  },
+  "devDependencies": {
+    "playwright": "1.58.2",
+    "wrangler": "4.151.3"
+  }
+}

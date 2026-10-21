@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>إدارة قرايتي السهلة</title>
+  <link rel="stylesheet" href="admin.css?v=40">
+  <link rel="stylesheet" href="admin-v30.css?v=30">
+  <link rel="stylesheet" href="admin-easy.css?v=40">
+</head>
+<body>
+  <section id="adminLoginGate" class="admin-login-gate">
+    <form id="adminLoginForm" class="admin-login-card" autocomplete="on">
+      <div class="admin-login-logo">Q</div>
+      <span class="eyebrow">Qrayti Private Admin</span>
+      <h1>ادخل للـAdmin</h1>
+      <p>اكتب كلمة السر الخاصة بمولى السيت.</p>
+      <label><span>كلمة السر</span><input id="adminPassword" type="password" autocomplete="current-password" required autofocus></label>
+      <button id="adminLoginButton" class="primary" type="submit">دخول</button>
+      <small id="adminLoginError"></small>
+      <a href="/">← ارجع لقرايتي</a>
+    </form>
+  </section>
+  <header class="admin-header">
+    <div class="brand-block"><span class="eyebrow">Qrayti • Private Admin</span><h1>إدارة قرايتي <small>Easy v40</small></h1><p>من هنا تزيد كور وتتحكم في الموقع والتطبيق من غير ما تمسّ الكود.</p></div>
+    <div class="admin-session"><span id="sessionDot" class="session-dot"></span><div><b id="sessionEmail">نثبت الدخول…</b><small id="sessionCounts">—</small></div><a href="/" target="_blank" rel="noopener">افتح قرايتي ↗</a><button id="adminLogout" class="ghost" type="button">خروج</button></div>
+  </header>
+
+  <nav class="tabs" aria-label="Admin sections">
+    <button class="tab active" data-tab="upload">＋ انشر كور</button>
+    <button class="tab" data-tab="overview">📊 شنو موجود</button>
+    <button class="tab" data-tab="manage">📚 ملفات الـAdmin</button>
+    <button class="tab" data-tab="mascot">🦉 حما غراب</button>
+    <button class="tab" data-tab="faq">❓ بديس القراي</button>
+    <button class="tab" data-tab="tools">⚙ أدوات</button>
+  </nav>
+
+  <main>
+    <section id="overviewTab" class="tab-panel">
+      <div class="overview-grid">
+        <article class="overview-card accent-card"><span>📚</span><div><small>كل الملفات</small><b id="ovTotalFiles">—</b><em id="ovDynamicFiles">—</em></div></article>
+        <article class="overview-card"><span>🧭</span><div><small>المواد</small><b id="ovSubjects">—</b><em>في الكاتالوغ الحالي</em></div></article>
+        <article class="overview-card"><span>🏛️</span><div><small>الجامعات / المؤسسات</small><b id="ovSources">—</b><em id="ovUnknownSources">—</em></div></article>
+        <article class="overview-card"><span>💾</span><div><small>حجم المكتبة</small><b id="ovBytes">—</b><em>Static + Admin metadata</em></div></article>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div><span class="eyebrow">Site Inventory</span><h2>شنو موجود توا في قرايتي؟</h2><p>من هنا تشوف كل ملف، وين موجود، المادة، الجامعة والمصدر. الملفات القديمة والجديدة في نفس النظرة.</p></div>
+          <div class="queue-actions"><button id="refreshOverview" class="ghost">حدّث</button><button id="exportOverview" class="ghost">Export CSV</button></div>
+        </div>
+        <div class="inventory-filters">
+          <input id="ovSearch" placeholder="لوّج: اسم ملف، مادة، جامعة، شابتر…">
+          <select id="ovLicence"><option value="">كل الإجازات</option><option value="info">Sciences de l’Informatique</option><option value="lt">LT</option><option value="lce">LCE</option></select>
+          <select id="ovYear"><option value="">كل السنوات</option><option value="1">السنة 1</option><option value="2">السنة 2</option></select>
+          <select id="ovSemester"><option value="">كل السداسيات</option><option value="1">S1</option><option value="2">S2</option></select>
+          <select id="ovSource"><option value="">كل الجامعات</option></select>
+          <select id="ovOrigin"><option value="">Static + Admin</option><option value="static">داخل النسخة FULL</option><option value="dynamic">مضاف من Admin</option></select>
+        </div>
+        <div class="overview-split">
+          <div>
+            <h3 class="subhead">المصادر</h3>
+            <div id="ovSourceCards" class="source-cards"><div class="empty">نحمّل…</div></div>
+          </div>
+          <div>
+            <h3 class="subhead">التوزيع الأكاديمي</h3>
+            <div id="ovContextCards" class="context-cards"><div class="empty">نحمّل…</div></div>
+          </div>
+        </div>
+        <div class="program-map-block">
+          <div class="program-map-head"><div><h3 class="subhead">البرنامج الدراسي الموجود في قرايتي</h3><p>كل سداسي والمواد الموجودة فيه فعليًا، مع عدد الملفات. هذا يعطيك نظرة على البرنامج من غير ما تدخل مادة بمادة.</p></div></div>
+          <div id="ovProgramMap" class="program-map"><div class="empty">نحمّل البرنامج…</div></div>
+        </div>
+        <div class="inventory-head"><b id="ovResultCount">—</b><span>ملف مطابق</span></div>
+        <div id="ovInventory" class="inventory-list"><div class="empty">نحمّل فهرس الموقع…</div></div>
+        <div id="ovPager" class="pager" hidden><button id="ovPrev">السابق</button><span id="ovPageLabel">1/1</span><button id="ovNext">التالي</button></div>
+      </div>
+    </section>
+
+    <section id="uploadTab" class="tab-panel active">
+      <section class="easy-publish-hero">
+        <div><span class="eyebrow">أسهل طريقة</span><h2>كور واحد، يظهر في الموقع والتطبيق</h2><p>اختار المكان والمادة، حطّ الملفات، وبعدها اضغط «انشر المحدد». ما تحتاج حتى أمر ولا كود.</p></div>
+        <div class="publish-destinations"><span>🌐 الموقع</span><b>＋</b><span>📱 Android</span><em>نفس الكاتالوغ • يتحدّث آليًا</em></div>
+      </section>
+      <div class="easy-steps" aria-label="خطوات النشر">
+        <div><b>1</b><span>اختار الإجازة والسنة والسداسي</span></div>
+        <div><b>2</b><span>اختار المادة: كور أو TD أو TP…</span></div>
+        <div><b>3</b><span>اختار الملفات من جهازك</span></div>
+        <div><b>4</b><span>راجع الاسم واضغط انشر</span></div>
+      </div>
+      <div class="remote-shortcuts">
+        <button type="button" data-tab-target="manage">📚 أخفي أو عدّل كور</button>
+        <button type="button" data-tab-target="faq">❓ عدّل أسئلة بديس</button>
+        <button type="button" data-tab-target="mascot">🦉 عدّل كلام الماسكوت</button>
+        <button type="button" data-tab-target="overview">📊 شوف المحتوى الكل</button>
+      </div>
+      <div class="mode-switch panel slim-panel">
+        <div><b>طريقة الخدمة</b><small>Quick للاستعمال اليومي • Advanced للدفعات الكبيرة</small></div>
+        <div class="segmented"><button id="quickMode" class="active">سريع</button><button id="advancedMode">Advanced</button></div>
+      </div>
+
+      <div class="panel context-panel">
+        <div class="panel-head"><div><span class="eyebrow">1 • المكان الأكاديمي</span><h2>وين يمشيو الملفات؟</h2></div><span class="hint">القيم هاذي تتنسخ للملفات الجديدة، وبعد تنجم تبدّل المحدد بالجملة.</span></div>
+        <div class="form-grid">
+          <label><span>الإجازة</span><select id="licence"><option value="info">Sciences de l’Informatique</option><option value="lt">LT</option><option value="lce">LCE</option></select></label>
+          <label><span>السنة</span><select id="year"><option value="1">السنة الأولى</option><option value="2">السنة الثانية</option></select></label>
+          <label><span>السداسي</span><select id="semester"><option value="1">S1</option><option value="2">S2</option></select></label>
+          <label><span>الشعبة</span><select id="track"><option value="common">جذع مشترك</option><option value="genie">Génie Logiciel</option><option value="multimedia">Multimédia</option></select></label>
+          <label class="wide"><span>المادة</span><select id="subject"></select></label>
+          <label><span>النوع</span><select id="category"><option value="cours">Cours</option><option value="td">TD</option><option value="tp">TP</option><option value="exam">Examens</option><option value="resume">Résumés</option><option value="qcm">QCM</option><option value="extra">Fichiers</option></select></label>
+          <label><span>اسم الجزء (اختياري)</span><input id="group" value="Cours" placeholder="مثال: Chapitre 1"></label>
+          <label><span>الجامعة (اختياري)</span><input id="sourceUniversity" list="tunisianUniversities" placeholder="مثال: جامعة المنستير"></label>
+          <label><span>الكلية / المعهد (اختياري)</span><input id="sourceInstitution" placeholder="مثال: كلية العلوم بالمنستير"></label>
+          <label><span>اسم الأستاذ/ة (إذا موجود داخل الملف)</span><input id="sourceInstructor" placeholder="مثال: Soumaya Cherichi"></label>
+          <label class="toggle-line wide rights-confirm"><input id="rightsConfirmed" type="checkbox"><span>نتأكّد أن عندي إذن بنشر الملف أو أنه منشور برخصة تسمح بذلك، وأنه ليس كتابًا مدفوعًا.</span></label>
+          <label class="toggle-line publish-toggle"><input id="publishNow" type="checkbox" checked><span>خليه ظاهر مباشرة في الموقع والتطبيق</span></label>
+        </div>
+        <datalist id="tunisianUniversities"><option value="جامعة تونس"><option value="جامعة تونس المنار"><option value="جامعة قرطاج"><option value="جامعة منوبة"><option value="جامعة جندوبة"><option value="جامعة سوسة"><option value="جامعة المنستير"><option value="جامعة القيروان"><option value="جامعة صفاقس"><option value="جامعة قابس"><option value="جامعة قفصة"><option value="جامعة الزيتونة"><option value="الجامعة الافتراضية التونسية"></datalist>
+        <div id="customSubject" class="custom-subject" hidden>
+          <label><span>اسم المادة الرسمي</span><input id="newSubjectName" placeholder="Programmation Python"></label>
+          <label><span>الاسم بالعربي</span><input id="newSubjectAr" placeholder="برمجة بايثون"></label>
+          <label><span>اختصار</span><input id="newSubjectAbbr" placeholder="PY"></label>
+          <label><span>معرّف داخلي</span><input id="newSubjectId" placeholder="python2"></label>
+        </div>
+        <div class="context-actions advanced-only"><button id="applyContextSelected" class="ghost">طبّق المكان الأكاديمي الحالي على المحدد</button><button id="savePreset" class="ghost">احفظ كـPreset</button><select id="presetSelect"><option value="">Presets محفوظة…</option></select></div>
+      </div>
+
+      <div class="panel drop-panel">
+        <div class="panel-head"><div><span class="eyebrow">2 • الملفات</span><h2>اختار ملفات أو مجلد كامل</h2></div><div class="queue-actions"><button id="checkDuplicates" class="ghost">افحص التكرار</button><button id="clearQueue" class="ghost">نظّف القائمة</button></div></div>
+        <div class="picker-grid">
+          <label id="dropZone" class="drop-zone easy-drop-zone">
+            <input id="filePicker" type="file" multiple accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.zip,.rar,.7z,.pkt,.pka,.png,.jpg,.jpeg,.webp,.mp3,.wav">
+            <span class="drop-icon">＋</span><b>اضغط هنا واختار الكور</b><p>PDF، Word، PowerPoint، صور وبقية الملفات.</p><small>نحن نتكفّل بالرفع والتخزين والترتيب.</small>
+          </label>
+          <label class="drop-zone folder-zone advanced-only">
+            <input id="folderPicker" type="file" multiple webkitdirectory directory>
+            <span class="drop-icon">📁</span><b>استورد Folder كامل</b><p>قرايتي يحاول يفهم Subject / Cours / TD / TP / Chapitre من أسماء المجلدات.</p><small>تراجع النتيجة قبل أي Upload.</small>
+          </label>
+        </div>
+      </div>
+
+      <details class="panel advanced-panel advanced-only" open>
+        <summary><div><span class="eyebrow">Advanced Bulk</span><b>أدوات تعديل مئات الملفات</b></div><span>⌄</span></summary>
+        <div class="advanced-body">
+          <div class="bulk-grid">
+            <label><span>لوّج داخل Queue</span><input id="queueSearch" placeholder="اسم ملف / مادة / شابتر"></label>
+            <label><span>اعرض</span><select id="queueStateFilter"><option value="">الكل</option><option value="ready">جاهز</option><option value="failed">فشل</option><option value="done">تم</option><option value="warnings">عنده Warning</option></select></label>
+            <label><span>Find</span><input id="bulkFind" placeholder="مثال: _final"></label>
+            <label><span>Replace</span><input id="bulkReplace" placeholder="اتركها فارغة للحذف"></label>
+            <button id="bulkFindReplace" class="ghost">Find / Replace للأسماء</button>
+            <label><span>Prefix</span><input id="bulkPrefix" placeholder="مثال: TD — "></label>
+            <label><span>Suffix</span><input id="bulkSuffix" placeholder="مثال: — Corrigé"></label>
+            <button id="bulkAffix" class="ghost">أضف Prefix/Suffix</button>
+            <label><span>ترقيم يبدأ من</span><input id="numberStart" type="number" min="1" value="1"></label>
+            <button id="autoNumber" class="ghost">رقّم المحدد</button>
+            <button id="smartInfer" class="ghost">🪄 حلّل المسارات من جديد</button>
+          </div>
+          <div class="bulk-tools"><span>طبّق على المحدد:</span><button data-bulk="subject">المادة الحالية</button><button data-bulk="category">النوع الحالي</button><button data-bulk="group">الشابتر الحالي</button><button data-bulk="source">المصدر الحالي</button><button id="selectVisible">اختار الظاهر</button><button id="selectAll">اختار/ألغي الكل</button></div>
+        </div>
+      </details>
+
+      <div class="panel queue-panel">
+        <div class="panel-head sticky-head"><div><span class="eyebrow">3 • راجع قبل النشر</span><h2>الملفات الجاهزة <span id="queueCount">0</span></h2><small id="queueStats">0 محدد</small></div><div class="queue-actions"><button id="retryFailed" class="ghost">عاود الفاشلين</button><button id="uploadAll" class="primary publish-button">انشر المحدد للموقع والتطبيق</button></div></div>
+        <div id="publishResult" class="publish-result" hidden></div>
+        <div id="queue" class="queue"><div class="empty">اختار ملفات باش تظهر هنا.</div></div>
+        <div id="queuePager" class="pager" hidden><button id="prevPage">السابق</button><span id="pageLabel">1/1</span><button id="nextPage">التالي</button></div>
+      </div>
+    </section>
+
+    <section id="manageTab" class="tab-panel">
+      <div class="panel">
+        <div class="panel-head"><div><span class="eyebrow">Dynamic catalog</span><h2>الملفات اللي زدتها من الـAdmin</h2></div><div class="queue-actions"><a href="/api/admin/export" class="button-link">Export JSON</a><button id="refreshItems" class="ghost">حدّث</button></div></div>
+        <div class="manage-filter"><input id="manageSearch" placeholder="لوّج بالاسم، المادة، الشابتر…"><select id="manageStatus"><option value="">الكل</option><option value="published">منشور</option><option value="draft">Draft</option><option value="hidden">مخفي</option></select></div>
+        <div class="manage-bulk"><button id="manageSelectAll">اختار الكل</button><button data-manage-bulk-status="published">انشر المحدد</button><button data-manage-bulk-status="draft">Draft للمحدد</button><button data-manage-bulk-status="hidden">اخفي المحدد</button><button id="manageBulkDelete" class="danger-btn">احذف المحدد</button></div>
+        <div id="manageList" class="manage-list"><div class="empty">نحمّل القائمة…</div></div>
+      </div>
+    </section>
+
+    <section id="mascotTab" class="tab-panel">
+      <div class="panel mascot-admin">
+        <div class="panel-head"><div><span class="eyebrow">Mascot Studio</span><h2>حما غراب 🦉</h2><p>كل الجمل والردود الموجودة توا تظهر هنا. عدّل، زِد، عطّل أو جرّب قبل الحفظ.</p></div><div class="queue-actions"><button id="previewMascot" class="ghost">▶ جرّب عشوائي</button><button id="resetMascotDefaults" class="ghost">↺ رجّع كل الحوارات الأصلية</button><button id="exportMascot" class="ghost">Export JSON</button><button id="saveMascot" class="primary">احفظ الحوارات</button></div></div>
+        <div class="mascot-settings form-grid">
+          <label class="toggle-line"><input id="mascotEnabled" type="checkbox" checked><span>حما غراب مفعّلة</span></label>
+          <label><span>الاسم</span><input id="mascotName" value="حما غراب"></label>
+          <label><span>الإيموجي</span><input id="mascotEmoji" value="🦉" maxlength="12"></label>
+          <label><span>أقل انتظار (ثانية)</span><input id="mascotMinDelay" type="number" min="10" max="900"></label>
+          <label><span>أقصى انتظار (ثانية)</span><input id="mascotMaxDelay" type="number" min="10" max="1200"></label>
+          <label><span>أقصى ظهور في Session</span><input id="mascotMaxSession" type="number" min="1" max="12"></label>
+        </div>
+        <div class="mascot-toolbar"><button id="addScenario" class="ghost">＋ سيناريو جديد</button><small>Weight أكبر = يظهر أكثر. كل سيناريو عنده سؤال حتى 3 اختيارات، وكل اختيار عنده رد.</small></div><div id="mascotPreviewBox" class="admin-preview" hidden></div>
+        <div id="mascotScenarios" class="scenario-list"><div class="empty">نحمّل الحوارات…</div></div>
+      </div>
+    </section>
+
+    <section id="faqTab" class="tab-panel">
+      <div class="panel faq-admin">
+        <div class="panel-head">
+          <div><span class="eyebrow">FAQ Studio</span><h2>بديس القراي ❓</h2><p>تحكّم في كل سؤال وجواب يظهر للطالب. تنجم حتى تزيد نكتة أو ملاحظة كيف سؤال عادي.</p></div>
+          <div class="queue-actions"><button id="previewFaq" class="ghost">معاينة</button><button id="resetFaqDefaults" class="ghost">↺ رجّع كل الأسئلة الأصلية</button><button id="saveFaq" class="primary">احفظ FAQ</button></div>
+        </div>
+        <div class="faq-settings form-grid">
+          <label class="toggle-line"><input id="faqEnabled" type="checkbox" checked><span>FAQ ظاهرة للطلبة</span></label>
+          <label><span>اسم الشخصية</span><input id="faqName" value="بديس القراي"></label>
+          <label class="wide"><span>السطر الصغير</span><input id="faqEyebrow" value="FAQ • بديس القراي يجاوبك"></label>
+          <label class="wide"><span>العنوان</span><input id="faqTitle" value="أسئلة ممكن تسألها فعلًا"></label>
+          <label class="wide"><span>المقدمة</span><input id="faqIntro"></label>
+        </div>
+        <div class="faq-toolbar"><button id="addFaqItem" class="ghost">＋ سؤال / نكتة جديدة</button><button id="exportFaq" class="ghost">Export JSON</button><small>الترتيب هنا هو نفسه في الموقع. استعمل ↑ و↓ للتقديم والتأخير.</small></div>
+        <div id="faqPreviewBox" class="admin-preview" hidden></div><div id="faqItems" class="faq-admin-list"><div class="empty">نحمّل الأسئلة…</div></div>
+      </div>
+    </section>
+
+    <section id="toolsTab" class="tab-panel">
+      <div class="panel tools-panel">
+        <span class="eyebrow">Maintenance</span><h2>أدوات أمان ونسخ احتياطي</h2>
+        <div class="tool-cards">
+          <article><span>💾</span><div><b>Export Catalog</b><p>نزّل JSON بكل الملفات اللي رفعتها من الـAdmin قبل تعديل كبير.</p></div><a href="/api/admin/export" class="button-link">نزّل Backup</a></article>
+          <article><span>🧪</span><div><b>Duplicate Check</b><p>يفحص Queue ضد المكتبة القديمة وضد ملفات الـAdmin.</p></div><button id="toolsDuplicate">افحص Queue</button></article>
+          <article><span>🔐</span><div><b>Admin Security</b><p>الـAdmin محمي بكلمة سر محفوظة كـCloudflare Secret وجلسة HttpOnly. ما تحطّش كلمة السر داخل HTML ولا تبعثها لحد.</p></div><small>Allowed: 9rayti.learn@gmail.com</small></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <template id="queueTemplate">
+    <article class="queue-item">
+      <label class="select-file"><input type="checkbox" class="row-select" checked><span></span></label>
+      <div class="file-meta"><b class="original-name"></b><small class="file-size"></small><small class="row-context"></small><div class="warnings"></div></div>
+      <label><span>الاسم اللي يبان للطالب</span><input class="row-display"></label>
+      <label><span>المادة</span><select class="row-subject"></select></label>
+      <label><span>النوع</span><select class="row-category"><option value="cours">Cours</option><option value="td">TD</option><option value="tp">TP</option><option value="exam">Examens</option><option value="resume">Résumés</option><option value="qcm">QCM</option><option value="extra">Fichiers</option></select></label>
+      <label><span>الشابتر / المجموعة</span><input class="row-group"></label>
+      <div class="upload-state"><div class="progress"><span></span></div><small class="state-text">جاهز</small></div>
+      <button class="remove-row" title="نحّي الملف">×</button>
+    </article>
+  </template>
+
+  <template id="scenarioTemplate">
+    <article class="scenario-card">
+      <div class="scenario-head"><label class="toggle-line"><input class="scenario-enabled" type="checkbox"><span>مفعّل</span></label><input class="scenario-title" placeholder="اسم داخلي للسيناريو"><label class="weight-field"><span>Weight</span><input class="scenario-weight" type="number" min="1" max="10"></label><button class="remove-scenario" title="حذف السيناريو">×</button></div>
+      <label><span>الجملة اللي تقولها حما غراب</span><textarea class="scenario-prompt" rows="2"></textarea></label>
+      <div class="choice-grid"></div>
+      <button class="add-choice ghost">＋ اختيار</button>
+    </article>
+  </template>
+
+  <template id="faqItemTemplate">
+    <article class="faq-edit-card">
+      <div class="faq-edit-head"><label class="toggle-line"><input class="faq-item-enabled" type="checkbox" checked><span>مفعّل</span></label><input class="faq-item-question" placeholder="السؤال أو عنوان النكتة"><div class="faq-order"><button class="faq-up" title="فوق">↑</button><button class="faq-down" title="لتحت">↓</button><button class="faq-remove danger-btn" title="حذف">×</button></div></div>
+      <label><span>الجواب / النص</span><textarea class="faq-item-answer" rows="3" placeholder="شنو يظهر للطالب وقت يفتحها"></textarea></label>
+    </article>
+  </template>
+
+  <script src="admin.js?v=40"></script>
+  <script src="admin-v30.js?v=32"></script>
+</body>
+</html>

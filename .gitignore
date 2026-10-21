@@ -31,6 +31,12 @@ node_modules/
 release/
 reports/
 website-backup-*/
-app/src/main/assets/catalog.json
+website/site/content/
+**/test-results/
+**/test-artifacts/
+*.log
+*.sqlite
+*.sqlite3
+*.db
 Thumbs.db
 .DS_Store

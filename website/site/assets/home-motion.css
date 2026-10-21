@@ -1,0 +1,13 @@
+/* Homepage interaction test. All selectors stay inside the landing screen. */
+.screen.landing .landing-copy{animation:homeEnter .48s cubic-bezier(.2,.8,.2,1) both}
+.screen.landing .campus-marquee-wrap{animation:homeEnter .58s .16s cubic-bezier(.2,.8,.2,1) both}
+@keyframes homeEnter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.screen.landing .welcome-badge::before{content:"";display:inline-block;width:7px;height:7px;margin-inline-end:7px;border-radius:50%;background:#16a085;box-shadow:0 0 0 0 rgba(22,160,133,.3);animation:homeLive 2.8s ease-out infinite}
+@keyframes homeLive{50%{box-shadow:0 0 0 6px rgba(22,160,133,0)}}
+.screen.landing .primary-cta,.screen.landing .install-cta,.screen.landing .campus-chip{transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s ease,border-color .18s ease}
+.screen.landing .landing-screen.home-leaving{opacity:0;transform:translateY(-8px);transition:opacity .15s ease,transform .15s ease}
+.screen.landing .primary-cta:disabled{cursor:wait}
+.screen.landing .primary-cta:active,.screen.landing .install-cta:active,.screen.landing .campus-chip:active{transform:translateY(1px) scale(.97)}
+.screen.landing .campus-marquee:focus-within .campus-marquee-track,.screen.landing .campus-marquee:hover .campus-marquee-track{animation-play-state:paused}
+.screen.landing .campus-chip:focus-visible,.screen.landing .primary-cta:focus-visible,.screen.landing .install-cta:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.screen.landing .landing-copy,.screen.landing .campus-marquee-wrap,.screen.landing .welcome-badge::before{animation:none!important}.screen.landing .landing-screen.home-leaving,.screen.landing .primary-cta,.screen.landing .install-cta,.screen.landing .campus-chip{transition:none!important}}
